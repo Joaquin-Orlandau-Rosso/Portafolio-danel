@@ -42,7 +42,7 @@ export const translations = {
         editingTools: {
           title: 'Herramientas de Edición',
           icon: '🎬',
-          items: ['Adobe Premiere Pro', 'After Effects', 'DaVinci Resolve', 'Final Cut Pro']
+          items: ['Adobe Premiere Pro', 'After Effects','Final Cut Pro']
         },
         specialties: {
           title: 'Especialidades',
