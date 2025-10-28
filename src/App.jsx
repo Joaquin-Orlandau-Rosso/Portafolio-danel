@@ -12,20 +12,38 @@ export default function App() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    // Smooth scrolling for the entire page
+    document.documentElement.style.scrollBehavior = 'smooth';
+
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    // Close mobile menu when clicking outside
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('nav')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   return (
     <LanguageProvider>
-      <div className="bg-gradient-to-b from-[#0f0f0f] via-[#1a1a2e] to-[#0f0f0f] text-white min-h-screen">
+      <div className="bg-gradient-to-b from-[#0f0f0f] via-[#1a1a2e] to-[#0f0f0f] text-white min-h-screen scroll-smooth">
         <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Footer />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Footer />
+        </main>
       </div>
     </LanguageProvider>
   );

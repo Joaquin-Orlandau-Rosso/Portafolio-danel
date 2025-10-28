@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { streamingProjects, professionalProjects } from '../data/projects';
+import React, { useState, useEffect } from 'react';
+import { streamingProjects, professionalProjects, irlProjects } from '../data/projects';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../languages/translations';
 
@@ -8,8 +8,13 @@ export default function Projects() {
   const t = translations[language];
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const openModal = (video) => {
-    setSelectedVideo(video);
+  const openModal = (project) => {
+    // Si es un video de YouTube, preparamos la URL con autoplay
+    if (project.isYoutube) {
+      const videoId = getYouTubeId(project.video);
+      project.videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+    setSelectedVideo(project);
     document.body.style.overflow = 'hidden';
   };
 
@@ -18,162 +23,180 @@ export default function Projects() {
     document.body.style.overflow = 'auto';
   };
 
+  // Function to extract YouTube video ID from URL
+  const getYouTubeId = (url) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  // Organizar proyectos por secciones
+  const professionalProjectsSection = professionalProjects; // Solo ejemplo 1
+  const socialProjects = [...streamingProjects]; // Todos los demás ejemplos (2, 3, 4, 5)
+
+  const renderProjectSection = (title, projects, bgColor) => (
+    <div className="mb-16 md:mb-24 animate-in slide-in-from-bottom-4 duration-700">
+      <h3 className={`text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center ${bgColor}`}>
+        {title}
+      </h3>
+      <div className="h-1 w-24 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-8 md:mb-12"></div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 max-w-4xl mx-auto items-stretch">
+        {projects.map((project) => (
+          <div
+            key={project.id}
+            className="group cursor-pointer h-full animate-in slide-in-from-bottom-4 duration-500 hover:scale-105 transition-all duration-300"
+            onClick={() => openModal(project)}
+          >
+            {/* Contenedor del ejemplo */}
+            <div className="bg-gray-800 rounded-2xl py-6 md:py-10 px-4 md:px-8 border border-gray-700 hover:border-purple-500/50 transition-all duration-300 flex flex-col h-full card-hover">
+
+              {/* Video/Imagen arriba */}
+              <div className="relative mb-4 md:mb-6">
+                <div className="relative bg-gray-700 rounded-xl overflow-hidden">
+                  {/* Ratio sin plugin: 9/16 en mobile, 3/4 en md+ */}
+                  <div className="w-full pt-[177.78%] md:pt-[133.33%]"></div>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+
+                  {/* Botón de reproducción estilo YouTube */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-black/40 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Información abajo */}
+              <div className="text-left flex-1 flex flex-col">
+                <h3 className={`text-xl md:text-2xl font-bold text-white mb-2 md:mb-3 transition-colors duration-300 ${
+                  project.id === 2 || project.id === 4 ? 'group-hover:text-cyan-400' : // Azul celeste para ejemplo 2 y 4
+                  project.id === 3 ? 'group-hover:text-violet-400' : // Violeta claro para ejemplo 3
+                  project.id === 5 ? 'group-hover:text-green-400' : // Verde para ejemplo 5
+                  'group-hover:text-purple-400' // Púrpura por defecto para ejemplo 1 y proyectos IRL
+                }`}>
+                  {project.title}
+                </h3>
+                <p className={`text-base md:text-lg mb-3 md:mb-4 font-medium ${
+                  project.id === 2 || project.id === 4 ? 'text-cyan-400' : // Azul celeste para ejemplo 2 y 4
+                  project.id === 3 ? 'text-violet-400' : // Violeta claro para ejemplo 3
+                  project.id === 5 ? 'text-green-400' : // Verde para ejemplo 5
+                  'text-purple-400' // Púrpura por defecto para ejemplo 1 y proyectos IRL
+                }`}>
+                  {project.category}
+                </p>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-4 md:mb-5">
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className="px-3 md:px-4 py-1 md:py-2 bg-blue-500/20 text-blue-300 rounded-full text-xs md:text-sm font-medium hover:bg-blue-500/30 transition-colors duration-300">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Clip Info */}
+                {project.clipInfo && (
+                  <div className="mt-3 pt-3 border-t border-gray-600/30">
+                    <p className="text-cyan-300 text-sm font-medium text-center flex items-center justify-center gap-2">
+                      <span className="w-1 h-1 bg-cyan-300 rounded-full"></span>
+                      {project.clipInfo}
+                      <span className="w-1 h-1 bg-cyan-300 rounded-full"></span>
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <section id="projects" className="py-20 px-4 relative">
+    <section id="projects" className="py-16 md:py-24 px-4 bg-gray-900 min-h-screen scroll-mt-20">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 md:mb-16 text-center animate-in slide-in-from-bottom-4 duration-500">
+          {t.projects.title}
+        </h2>
+
+        {/* Proyectos IRL */}
+        {renderProjectSection(
+          t.projects.irlProjects,
+          irlProjects,
+          'text-green-400'
+        )}
+
+        {/* Proyectos Redes */}
+        {renderProjectSection(
+          t.projects.socialProjects,
+          socialProjects,
+          'text-blue-400'
+        )}
+
+        {/* Proyectos Profesionales */}
+        {renderProjectSection(
+          t.projects.professionalProjects,
+          professionalProjectsSection,
+          'text-purple-400'
+        )}
+      </div>
+
+      {/* Modal para reproducir video */}
       {selectedVideo && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={closeModal}>
-          <div className="relative w-full max-w-4xl" onClick={e => e.stopPropagation()}>
-            <button
+          <div className="relative w-full max-w-4xl mx-auto" onClick={e => e.stopPropagation()}>
+            <button 
               onClick={closeModal}
-              className="absolute -top-10 right-0 text-white hover:text-purple-400 transition"
-              aria-label={language === 'es' ? 'Cerrar' : 'Close'}
+              className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors"
+              aria-label="Cerrar video"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <video
-              src={selectedVideo.video}
-              controls
-              autoPlay
-              className="w-full max-h-[80vh]"
-              onClick={e => e.stopPropagation()}
-            />
-            <div className="mt-2 text-white text-center">
-              <h3 className="text-xl font-bold">{selectedVideo.title}</h3>
-              <p className="text-sm text-gray-300">{selectedVideo.category}</p>
+            
+            <div className="relative pt-[56.25%] w-full">
+              <iframe
+                src={selectedVideo.videoUrl}
+                className="absolute top-0 left-0 w-full h-full rounded-lg"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={selectedVideo.title}
+                loading="lazy"
+              />
+            </div>
+            <div className="mt-4 text-center">
+              <p className={`text-xl font-bold ${
+                selectedVideo.id === 2 || selectedVideo.id === 4 ? 'text-cyan-400' :
+                selectedVideo.id === 3 ? 'text-violet-400' :
+                selectedVideo.id === 5 ? 'text-green-400' :
+                'text-purple-400'
+              }`}>
+                {selectedVideo.category}
+              </p>
+              {selectedVideo.clipInfo && (
+                <p className="text-cyan-300 text-base font-medium mt-2 flex items-center justify-center gap-2">
+                  <span className="w-1 h-1 bg-cyan-300 rounded-full"></span>
+                  {selectedVideo.clipInfo}
+                  <span className="w-1 h-1 bg-cyan-300 rounded-full"></span>
+                </p>
+              )}
             </div>
           </div>
         </div>
       )}
-
-      <div className="max-w-6xl mx-auto">
-        {/* Professional Videos Section */}
-        <div className="mb-20">
-          <h2 className="text-4xl font-bold mb-4 text-center">{t.projects.title}</h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-12"></div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {professionalProjects.map((project) => (
-              <div
-                key={project.id}
-                className="group bg-[#1a1a2e] border border-purple-500/20 rounded-xl overflow-hidden hover:border-purple-500/50 transition cursor-pointer"
-              >
-                <div className="relative overflow-hidden h-48 group">
-                  <div
-                    className="w-full h-full flex items-center justify-center bg-black/20 cursor-pointer"
-                    onClick={() => openModal(project)}
-                  >
-                    <video
-                      src={project.video}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                      preload="metadata"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openModal(project);
-                      }}
-                    >
-                      {language === 'es' ? 'Tu navegador no soporta la etiqueta de video.' : 'Your browser does not support the video tag.'}
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 pointer-events-none">
-                      <h3 className="text-white text-xl font-bold drop-shadow-lg">{project.title}</h3>
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="bg-black/50 rounded-full p-4 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-6 space-y-4">
-                    <div className="flex justify-between items-start">
-                      <span className="text-purple-400 text-sm font-semibold">{project.category}</span>
-                      <span className="text-purple-400 text-sm font-semibold">Video {project.id}</span>
-                    </div>
-
-                    <p className="text-gray-300 text-sm">{project.description}</p>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag, i) => (
-                        <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Streaming Videos Section */}
-        <div>
-          <h2 className="text-4xl font-bold mb-4 text-center">{language === 'es' ? 'Videos Streaming' : 'Streaming Videos'}</h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-12"></div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {streamingProjects.map((project) => (
-              <div
-                key={project.id}
-                className="group bg-[#1a1a2e] border border-blue-500/20 rounded-xl overflow-hidden hover:border-blue-500/50 transition cursor-pointer"
-              >
-                <div className="relative overflow-hidden h-48 group">
-                  <div
-                    className="w-full h-full flex items-center justify-center bg-black/20 cursor-pointer"
-                    onClick={() => openModal(project)}
-                  >
-                    <video
-                      src={project.video}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                      preload="metadata"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openModal(project);
-                      }}
-                    >
-                      {language === 'es' ? 'Tu navegador no soporta la etiqueta de video.' : 'Your browser does not support the video tag.'}
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 pointer-events-none">
-                      <h3 className="text-white text-xl font-bold drop-shadow-lg">{project.title}</h3>
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="bg-black/50 rounded-full p-4 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-6 space-y-4">
-                    <div className="flex justify-between items-start">
-                      <span className="text-blue-400 text-sm font-semibold">{project.category}</span>
-                      <span className="text-blue-400 text-sm font-semibold">Video {project.id}</span>
-                    </div>
-
-                    <p className="text-gray-300 text-sm">{project.description}</p>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag, i) => (
-                        <span key={i} className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

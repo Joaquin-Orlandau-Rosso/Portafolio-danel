@@ -1,45 +1,49 @@
-import curitaVideo from '../videos/CURITA.mp4';
-import frenteVideo from '../videos/Copia de Frente.mp4';
-import perroVideo from '../videos/Copia de Perro.mp4';
-import verduleroVideo from '../videos/Copia de Verdulero.mp4';
-import sanaVideo from '../videos/Copia de sana 1.mp4';
+// Videos ahora son enlaces de YouTube
 
 export const streamingProjects = [
   {
     id: 2,
     title: "Ejemplo 2",
-    category: "Comercial",
-    description: "Video promocional mostrando la fachada y ambiente de un negocio local.",
-    video: frenteVideo,
-    tags: ["Video 4K", "Estabilización", "Corrección de color"],
-    link: "#"
+    category: "Molestando a Amigos",
+    video: "https://www.youtube.com/watch?v=OqHrIP7x12A",
+    image: "/images/Frente.jpg",
+    tags: ["League of Legends", "Humor"],
+    clipInfo: "Clip de Danez43",
+    link: "#",
+    isYoutube: true,
   },
   {
     id: 3,
     title: "Ejemplo 3",
-    category: "Emocional",
-    description: "Conmovedor video resaltando la conexión entre humanos y sus mascotas.",
-    video: perroVideo,
-    tags: ["Storytelling", "Música original", "Edición narrativa"],
-    link: "#"
+    category: "Clip Destacado de Fuvu",
+    video: "https://www.youtube.com/watch?v=zzoIKLQhoqU",
+    image: "/images/fuvu perro.jpg",
+    tags: ["Anecdota", "Humor"],
+    clipInfo: "Clip de Fuvu",
+    link: "#",
+    isYoutube: true
   },
   {
     id: 4,
     title: "Ejemplo 4",
-    category: "Documental",
-    description: "Retrato de la vida cotidiana en un mercado tradicional local.",
-    video: verduleroVideo,
-    tags: ["Documental", "Sonido ambiente", "Fotografía natural"],
-    link: "#"
+    category: "Clip Destacado de Verdulero",
+    video: "https://www.youtube.com/watch?v=TTdzua7PLaM",
+    image: "/images/el_verdulero.jpg",
+    tags: ["League of Legends", "Humor"],
+    clipInfo: "Clip de Danez43",
+    link: "#",
+    isYoutube: true
   },
   {
     id: 5,
     title: "Ejemplo 5",
-    category: "Salud",
-    description: "Video informativo sobre procedimientos de cuidado y bienestar personal.",
-    video: sanaVideo,
-    tags: ["Educativo", "Motion Graphics", "Locución"],
-    link: "#"
+    category: "Clip Destacado de Sana",
+    video: "https://www.youtube.com/watch?v=M1983cFqy4Y",
+    image: "/images/loli_mafiosa_miniatura.jpg",
+    tags: ["Streaming", "Humor"],
+    clipInfo: "Clip de Sana",
+    link: "#",
+    isYoutube: true
   }
 ];
 
@@ -47,10 +51,16 @@ export const professionalProjects = [
   {
     id: 1,
     title: "Ejemplo 1",
-    category: "Publicidad Profesional",
-    description: "Video publicitario para producto de salud, destacando practicidad y confiabilidad.",
-    video: curitaVideo,
-    tags: ["Edición de Video", "Post-producción", "Color Grading"],
-    link: "#"
+    category: "Profesionalismo",
+    video: "https://www.youtube.com/watch?v=VIDEO_ID_AQUI",
+    image: "/images/curita.jpg",
+    tags: ["Trabajo"],
+    clipInfo: "Clip Profesional",
+    link: "#",
+    isYoutube: true
   }
+];
+
+export const irlProjects = [
+  // Proyectos IRL - Agregar aquí cuando sea necesario
 ];
