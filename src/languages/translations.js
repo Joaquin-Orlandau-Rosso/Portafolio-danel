@@ -42,7 +42,7 @@ export const translations = {
         editingTools: {
           title: 'Herramientas de Edición',
           icon: '🎬',
-          items: ['Adobe Premiere Pro', 'After Effects','Final Cut Pro']
+          items: ['Cap Cut', 'After Effects','Final Cut Pro','Photoshop']
         },
         specialties: {
           title: 'Especialidades',
@@ -52,7 +52,7 @@ export const translations = {
         certifications: {
           title: 'Certificaciones',
           icon: '🏆',
-          items: ['Adobe Certified Expert', 'DaVinci Resolve Certified', 'Avid Media Composer']
+          items: ['Tecnico en diseño de imagen, sonido y multimedia (UNNE)']
         }
       }
     },

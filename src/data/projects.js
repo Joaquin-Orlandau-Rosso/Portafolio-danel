@@ -52,7 +52,7 @@ export const professionalProjects = [
     id: 1,
     title: "Ejemplo 1",
     category: "Profesionalismo",
-    video: "https://www.youtube.com/watch?v=VIDEO_ID_AQUI",
+    video: "https://www.youtube.com/watch?v=J2ob4f8whHU",
     image: "/images/curita.jpg",
     tags: ["Trabajo"],
     clipInfo: "Clip Profesional",
@@ -62,5 +62,26 @@ export const professionalProjects = [
 ];
 
 export const irlProjects = [
-  // Proyectos IRL - Agregar aquí cuando sea necesario
+  {
+    id: 6,
+    title: "Trabajo de manualidad",
+    category: "Manualidad",
+    video: "https://www.youtube.com/watch?v=Lsby2lWpxCo",
+    image: "/images/calabaza.jpg",
+    tags: ["Manualidad", "Arte"],
+    clipInfo: "Descripción del video 1",
+    link: "#",
+    isYoutube: true
+  },
+  {
+    id: 7,
+    title: "Bandeja de caramelo",
+    category: "Manualidad",
+    video: "https://www.youtube.com/watch?v=lKockneAvYA",
+    image: "/images/bandeja caramelo.jpg",
+    tags: ["Manualidad", "Arte"],
+    clipInfo: "Descripción del video 2",
+    link: "#",
+    isYoutube: true
+  }
 ];
