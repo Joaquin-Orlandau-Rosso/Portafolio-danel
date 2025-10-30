@@ -69,7 +69,7 @@ export const irlProjects = [
     video: "https://www.youtube.com/watch?v=Lsby2lWpxCo",
     image: "/images/calabaza.jpg",
     tags: ["Manualidad", "Arte"],
-    clipInfo: "Descripción del video 1",
+    clipInfo: "Artesania",
     link: "#",
     isYoutube: true
   },
@@ -80,7 +80,7 @@ export const irlProjects = [
     video: "https://www.youtube.com/watch?v=lKockneAvYA",
     image: "/images/bandeja caramelo.jpg",
     tags: ["Manualidad", "Arte"],
-    clipInfo: "Descripción del video 2",
+    clipInfo: "Artesania",
     link: "#",
     isYoutube: true
   }
