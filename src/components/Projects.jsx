@@ -59,7 +59,7 @@ export default function Projects() {
                   <div className="w-full pt-[177.78%] md:pt-[133.33%]"></div>
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={typeof project.title === 'object' ? project.title[language] || project.title['es'] : project.title}
                     className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                   />
 
@@ -82,18 +82,18 @@ export default function Projects() {
                   project.id === 5 ? 'group-hover:text-green-400' : // Verde para ejemplo 5
                   'group-hover:text-purple-400' // Púrpura por defecto para ejemplo 1 y proyectos IRL
                 }`}>
-                  {project.title}
+                  {typeof project.title === 'object' ? project.title[language] || project.title['es'] : project.title}
                 </h3>
                 <p className={`text-base md:text-lg mb-3 md:mb-4 font-medium ${
-                  project.id === 2 || project.id === 4 ? 'text-cyan-400' : // Azul celeste para ejemplo 2 y 4
-                  project.id === 3 ? 'text-violet-400' : // Violeta claro para ejemplo 3
-                  project.id === 5 ? 'text-green-400' : // Verde para ejemplo 5
-                  'text-purple-400' // Púrpura por defecto para ejemplo 1 y proyectos IRL
+                  project.id === 2 || project.id === 4 ? 'text-cyan-400' :
+                  project.id === 3 ? 'text-violet-400' :
+                  project.id === 5 ? 'text-green-400' :
+                  'text-purple-400'
                 }`}>
-                  {project.category}
+                  {typeof project.category === 'object' ? project.category[language] || project.category['es'] : project.category}
                 </p>
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-4 md:mb-5">
-                  {project.description}
+                  {typeof project.description === 'object' ? project.description[language] || project.description['es'] : project.description}
                 </p>
 
                 {/* Tags */}
@@ -110,7 +110,7 @@ export default function Projects() {
                   <div className="mt-3 pt-3 border-t border-gray-600/30">
                     <p className="text-cyan-300 text-sm font-medium text-center flex items-center justify-center gap-2">
                       <span className="w-1 h-1 bg-cyan-300 rounded-full"></span>
-                      {project.clipInfo}
+                      {typeof project.clipInfo === 'object' ? project.clipInfo[language] || project.clipInfo['es'] : project.clipInfo}
                       <span className="w-1 h-1 bg-cyan-300 rounded-full"></span>
                     </p>
                   </div>
@@ -184,12 +184,12 @@ export default function Projects() {
                 selectedVideo.id === 5 ? 'text-green-400' :
                 'text-purple-400'
               }`}>
-                {selectedVideo.category}
+                {typeof selectedVideo.category === 'object' ? selectedVideo.category[language] || selectedVideo.category['es'] : selectedVideo.category}
               </p>
               {selectedVideo.clipInfo && (
                 <p className="text-cyan-300 text-base font-medium mt-2 flex items-center justify-center gap-2">
                   <span className="w-1 h-1 bg-cyan-300 rounded-full"></span>
-                  {selectedVideo.clipInfo}
+                  {typeof selectedVideo.clipInfo === 'object' ? selectedVideo.clipInfo[language] || selectedVideo.clipInfo['es'] : selectedVideo.clipInfo}
                   <span className="w-1 h-1 bg-cyan-300 rounded-full"></span>
                 </p>
               )}

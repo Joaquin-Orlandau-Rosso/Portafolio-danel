@@ -6,7 +6,8 @@ export const translations = {
       about: 'Sobre Mí',
       projects: 'Proyectos',
       skills: 'Habilidades',
-      contact: 'Contacto'
+      contact: 'Contacto',
+      language: 'Idioma'
     },
     // Hero Section
     hero: {
@@ -79,7 +80,8 @@ export const translations = {
       about: 'About',
       projects: 'Projects',
       skills: 'Skills',
-      contact: 'Contact'
+      contact: 'Contact',
+      language: 'Language'
     },
     // Hero Section
     hero: {
@@ -136,7 +138,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      copyright: '© 2024 Danel. Made with React and Tailwind CSS'
+      copyright: '© 2025 Danel. Made with React and Tailwind CSS'
     },
     // Common
     common: {
