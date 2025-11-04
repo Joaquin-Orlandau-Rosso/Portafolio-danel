@@ -36,6 +36,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
               { key: 'home', label: t.nav.home },
               { key: 'about', label: t.nav.about },
               { key: 'projects', label: t.nav.projects },
+              { key: 'pricing', label: t.nav.pricing },
               { key: 'skills', label: t.nav.skills }
             ].map(item => (
               <button
@@ -124,6 +125,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
               { key: 'home', label: t.nav.home },
               { key: 'about', label: t.nav.about },
               { key: 'projects', label: t.nav.projects },
+              { key: 'pricing', label: t.nav.pricing },
               { key: 'skills', label: t.nav.skills }
             ].map(item => (
               <button

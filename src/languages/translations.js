@@ -5,6 +5,7 @@ export const translations = {
       home: 'Inicio',
       about: 'Sobre Mí',
       projects: 'Proyectos',
+      pricing: 'Precios',
       skills: 'Habilidades',
       contact: 'Contacto',
       language: 'Idioma'
@@ -62,6 +63,33 @@ export const translations = {
       title: 'Contacto',
       subtitle: '¿Tienes un proyecto en mente? ¡Hablemos!'
     },
+    // Pricing Section
+    pricing: {
+      title: 'Precios',
+      shorts: {
+        title: 'Shorts Verticales',
+        features: [
+          'Precio por video individual',
+          'Varía según duración y complejidad'
+        ]
+      },
+      professional: {
+        title: 'Proyectos Profesionales',
+        custom: 'Personalizado',
+        features: [
+          'Presupuesto a convenir según alcance',
+          'Debe ser charlado previamente'
+        ]
+      },
+      longVideos: {
+        title: 'Videos Largos (YouTube)',
+        consult: 'Consultar',
+        features: [
+          'Sin ejemplos disponibles actualmente',
+          'Precio según duración y nivel de edición'
+        ]
+      }
+    },
     // Footer
     footer: {
       copyright: '© 2024 Danel. Hecho con React y Tailwind CSS'
@@ -79,6 +107,7 @@ export const translations = {
       home: 'Home',
       about: 'About',
       projects: 'Projects',
+      pricing: 'Pricing',
       skills: 'Skills',
       contact: 'Contact',
       language: 'Language'
@@ -135,6 +164,33 @@ export const translations = {
     contact: {
       title: 'Contact',
       subtitle: 'Have a project in mind? Let\'s talk!'
+    },
+    // Pricing Section
+    pricing: {
+      title: 'Pricing',
+      shorts: {
+        title: 'Vertical Shorts',
+        features: [
+          'Price per individual video',
+          'Varies based on duration and complexity'
+        ]
+      },
+      professional: {
+        title: 'Professional Projects',
+        custom: 'Custom',
+        features: [
+          'Budget agreed based on scope',
+          'Must be discussed beforehand'
+        ]
+      },
+      longVideos: {
+        title: 'Long Videos (YouTube)',
+        consult: 'Consult',
+        features: [
+          'No examples available currently',
+          'Price based on duration and editing level'
+        ]
+      }
     },
     // Footer
     footer: {

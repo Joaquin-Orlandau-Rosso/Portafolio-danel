@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Pricing from './components/Pricing';
 import Skills from './components/Skills';
 import Footer from './components/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
@@ -41,6 +42,7 @@ export default function App() {
           <Hero />
           <About />
           <Projects />
+          <Pricing />
           <Skills />
           <Footer />
         </main>
