@@ -98,7 +98,14 @@ export default function Projects() {
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag, i) => (
+                  {project.tags.filter(tag => {
+                    // Show Spanish tags when language is Spanish
+                    if (language === 'es') {
+                      return ['Manualidad', 'Arte', 'Trabajo', 'League of Legends', 'Humor', 'Anecdota', 'Streaming'].includes(tag);
+                    }
+                    // Show English tags when language is English
+                    return ['Craft', 'Art', 'Work', 'Humor', 'Streaming'].includes(tag);
+                  }).map((tag, i) => (
                     <span key={i} className="px-3 md:px-4 py-1 md:py-2 bg-blue-500/20 text-blue-300 rounded-full text-xs md:text-sm font-medium hover:bg-blue-500/30 transition-colors duration-300">
                       {tag}
                     </span>
