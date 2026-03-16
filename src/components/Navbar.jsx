@@ -10,128 +10,89 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offsetTop = element.offsetTop - 80; // Ajuste para el navbar fijo
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
     }
-    setIsMenuOpen(false); // Cerrar menú móvil después del click
+    setIsMenuOpen(false);
   };
 
+  const navItems = [
+    { key: 'home', label: t.nav.home },
+    { key: 'about', label: t.nav.about },
+    { key: 'projects', label: t.nav.projects },
+    { key: 'pricing', label: t.nav.pricing },
+    { key: 'skills', label: t.nav.skills },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f0f0f]/90 backdrop-blur-md border-b border-purple-500/20 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f0f0f]/80 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center font-bold transition-transform duration-300 hover:scale-110">
+          {/* Logo */}
+          <button onClick={() => scrollToSection('home')} className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center font-bold text-sm transition-transform duration-300 group-hover:scale-110">
               D
             </div>
-            <span className="font-bold text-xl">Danel</span>
-          </div>
+            <span className="font-semibold text-lg">Danel</span>
+          </button>
 
-          {/* Desktop Menu - Centered */}
-          <div className="hidden md:flex gap-8 absolute left-1/2 transform -translate-x-1/2">
-            {[
-              { key: 'home', label: t.nav.home },
-              { key: 'about', label: t.nav.about },
-              { key: 'projects', label: t.nav.projects },
-              { key: 'pricing', label: t.nav.pricing },
-              { key: 'skills', label: t.nav.skills }
-            ].map(item => (
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-1">
+            {navItems.map(item => (
               <button
                 key={item.key}
                 onClick={() => scrollToSection(item.key)}
-                className="nav-item px-3 py-2 rounded-lg font-medium transition-all duration-300 hover:text-purple-400 hover:scale-105"
+                className="px-4 py-2 rounded-lg text-sm text-gray-400 hover:text-white font-medium transition-all duration-200 hover:bg-white/[0.04]"
               >
                 {item.label}
               </button>
             ))}
           </div>
 
-          {/* Language Switcher - Right */}
-          <div className="hidden md:flex items-center gap-2">
-            <button
-              onClick={() => {
-                const newLang = language === 'es' ? 'en' : 'es';
-                changeLanguage(newLang);
-              }}
-              className={`lang-switch px-3 py-1 rounded-md text-sm font-medium transition-all duration-300 hover:scale-105 ${
-                language === 'es'
-                  ? 'active bg-purple-600 text-white shadow-lg shadow-purple-500/30'
-                  : 'text-gray-300 hover:text-purple-400 hover:bg-purple-500/10'
-              }`}
-            >
-              ES
-            </button>
-            <button
-              onClick={() => {
-                const newLang = language === 'en' ? 'es' : 'en';
-                changeLanguage(newLang);
-              }}
-              className={`lang-switch px-3 py-1 rounded-md text-sm font-medium transition-all duration-300 hover:scale-105 ${
-                language === 'en'
-                  ? 'active bg-purple-600 text-white shadow-lg shadow-purple-500/30'
-                  : 'text-gray-300 hover:text-purple-400 hover:bg-purple-500/10'
-              }`}
-            >
-              EN
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-purple-500/10 transition-all duration-300 hover:scale-110"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden pb-4 space-y-2 mobile-menu">
-            {/* Language Switcher - Mobile */}
-            <div className="flex gap-2 pb-2 border-b border-purple-500/20">
+          {/* Language + Mobile Menu */}
+          <div className="flex items-center gap-3">
+            {/* Language toggle */}
+            <div className="flex items-center bg-gray-900/50 border border-gray-800 rounded-lg p-0.5">
               <button
-                onClick={() => {
-                  const newLang = language === 'es' ? 'en' : 'es';
-                  changeLanguage(newLang);
-                }}
-                className={`lang-switch px-3 py-1 rounded-md text-sm font-medium transition-all duration-300 hover:scale-105 ${
+                onClick={() => changeLanguage('es')}
+                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
                   language === 'es'
-                    ? 'active bg-purple-600 text-white shadow-lg shadow-purple-500/30'
-                    : 'text-gray-300 hover:text-purple-400 hover:bg-purple-500/10'
+                    ? 'bg-purple-600 text-white'
+                    : 'text-gray-500 hover:text-gray-300'
                 }`}
               >
                 ES
               </button>
               <button
-                onClick={() => {
-                  const newLang = language === 'en' ? 'es' : 'en';
-                  changeLanguage(newLang);
-                }}
-                className={`lang-switch px-3 py-1 rounded-md text-sm font-medium transition-all duration-300 hover:scale-105 ${
+                onClick={() => changeLanguage('en')}
+                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
                   language === 'en'
-                    ? 'active bg-purple-600 text-white shadow-lg shadow-purple-500/30'
-                    : 'text-gray-300 hover:text-purple-400 hover:bg-purple-500/10'
+                    ? 'bg-purple-600 text-white'
+                    : 'text-gray-500 hover:text-gray-300'
                 }`}
               >
                 EN
               </button>
             </div>
 
-            {[
-              { key: 'home', label: t.nav.home },
-              { key: 'about', label: t.nav.about },
-              { key: 'projects', label: t.nav.projects },
-              { key: 'pricing', label: t.nav.pricing },
-              { key: 'skills', label: t.nav.skills }
-            ].map(item => (
+            {/* Mobile hamburger */}
+            <button
+              className="md:hidden p-2 rounded-lg hover:bg-white/[0.04] transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden pb-4 pt-2 space-y-1 mobile-menu border-t border-white/[0.04]">
+            {navItems.map(item => (
               <button
                 key={item.key}
                 onClick={() => scrollToSection(item.key)}
-                className="block w-full text-left py-3 px-2 hover:text-purple-400 transition-all duration-300 transform hover:translate-x-2 hover:bg-purple-500/10 rounded-lg hover:scale-105"
+                className="block w-full text-left py-2.5 px-3 text-gray-400 hover:text-white hover:bg-white/[0.04] rounded-lg text-sm font-medium transition-all duration-200"
               >
                 {item.label}
               </button>

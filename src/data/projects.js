@@ -18,6 +18,7 @@ export const streamingProjects = [
       es: "Clip de Danez43",
       en: "Clip by Danez43"
     },
+    clipLink: "https://www.instagram.com/danez43_44/",
     link: "#",
     isYoutube: true,
   },
@@ -38,6 +39,7 @@ export const streamingProjects = [
       es: "Clip de Fuvu",
       en: "Clip by Fuvu"
     },
+    clipLink: "https://www.tiktok.com/@fuvu_vt",
     link: "#",
     isYoutube: true
   },
@@ -58,6 +60,7 @@ export const streamingProjects = [
       es: "Clip de Danez43",
       en: "Clip by Danez43"
     },
+    clipLink: "https://www.instagram.com/danez43_44/",
     link: "#",
     isYoutube: true
   },

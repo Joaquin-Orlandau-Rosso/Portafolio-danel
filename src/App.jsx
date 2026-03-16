@@ -10,16 +10,10 @@ import { LanguageProvider } from './contexts/LanguageContext';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    // Smooth scrolling for the entire page
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-
-    // Close mobile menu when clicking outside
     const handleClickOutside = (event) => {
       if (isMenuOpen && !event.target.closest('nav')) {
         setIsMenuOpen(false);
@@ -27,16 +21,12 @@ export default function App() {
     };
 
     document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('click', handleClickOutside);
-    };
+    return () => document.removeEventListener('click', handleClickOutside);
   }, [isMenuOpen]);
 
   return (
     <LanguageProvider>
-      <div className="bg-gradient-to-b from-[#0f0f0f] via-[#1a1a2e] to-[#0f0f0f] text-white min-h-screen scroll-smooth">
+      <div className="bg-[#0a0a0f] text-white min-h-screen scroll-smooth">
         <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <main>
           <Hero />
@@ -44,8 +34,8 @@ export default function App() {
           <Projects />
           <Pricing />
           <Skills />
-          <Footer />
         </main>
+        <Footer />
       </div>
     </LanguageProvider>
   );

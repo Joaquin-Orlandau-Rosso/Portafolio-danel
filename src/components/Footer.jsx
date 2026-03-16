@@ -7,9 +7,9 @@ export default function Footer() {
   const t = translations[language];
 
   return (
-    <footer className="border-t border-purple-500/20 py-6 md:py-8 px-4 scroll-mt-20">
+    <footer className="border-t border-gray-800/50 py-8 px-4">
       <div className="max-w-6xl mx-auto text-center">
-        <p className="text-gray-400 text-sm animate-in slide-in-from-bottom-4 duration-500">
+        <p className="text-gray-600 text-sm">
           {t.footer.copyright}
         </p>
       </div>
