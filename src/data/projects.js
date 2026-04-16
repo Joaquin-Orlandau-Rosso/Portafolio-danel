@@ -4,12 +4,12 @@ export const streamingProjects = [
   {
     id: 2,
     title: {
-      es: "Ejemplo 2",
-      en: "Example 2"
-    },
-    category: {
       es: "Molestando a Amigos",
       en: "Teasing Friends"
+    },
+    category: {
+      es: "Ejemplo 2",
+      en: "Example 2"
     },
     video: "https://www.youtube.com/watch?v=OqHrIP7x12A",
     image: "/images/Frente.jpg",
@@ -21,16 +21,17 @@ export const streamingProjects = [
     clipLink: "https://www.instagram.com/danez43_44/",
     link: "#",
     isYoutube: true,
+    format: "short"
   },
   {
     id: 3,
     title: {
-      es: "Ejemplo 3",
-      en: "Example 3"
-    },
-    category: {
       es: "Clip Destacado de Fuvu",
       en: "Featured Clip from Fuvu"
+    },
+    category: {
+      es: "Ejemplo 3",
+      en: "Example 3"
     },
     video: "https://www.youtube.com/watch?v=zzoIKLQhoqU",
     image: "/images/fuvu perro.jpg",
@@ -41,17 +42,18 @@ export const streamingProjects = [
     },
     clipLink: "https://www.tiktok.com/@fuvu_vt",
     link: "#",
-    isYoutube: true
+    isYoutube: true,
+    format: "short"
   },
   {
     id: 4,
     title: {
-      es: "Ejemplo 4",
-      en: "Example 4"
-    },
-    category: {
       es: "Clip Destacado de Verdulero",
       en: "Featured Clip from Verdulero"
+    },
+    category: {
+      es: "Ejemplo 4",
+      en: "Example 4"
     },
     video: "https://www.youtube.com/watch?v=TTdzua7PLaM",
     image: "/images/el_verdulero.jpg",
@@ -62,17 +64,18 @@ export const streamingProjects = [
     },
     clipLink: "https://www.instagram.com/danez43_44/",
     link: "#",
-    isYoutube: true
+    isYoutube: true,
+    format: "short"
   },
   {
     id: 5,
     title: {
-      es: "Ejemplo 5",
-      en: "Example 5"
-    },
-    category: {
       es: "Clip Destacado de Sana",
       en: "Featured Clip from Sana"
+    },
+    category: {
+      es: "Ejemplo 5",
+      en: "Example 5"
     },
     video: "https://www.youtube.com/watch?v=M1983cFqy4Y",
     image: "/images/loli_mafiosa_miniatura.jpg",
@@ -82,7 +85,29 @@ export const streamingProjects = [
       en: "Clip by Sana"
     },
     link: "#",
-    isYoutube: true
+    isYoutube: true,
+    format: "short"
+  },
+  {
+    id: 8,
+    title: {
+      es: "PEAK",
+      en: "PEAK"
+    },
+    category: {
+      es: "Video de YouTube",
+      en: "YouTube Video"
+    },
+    video: "https://www.youtube.com/watch?v=1zFL9SFd54M",
+    image: "https://img.youtube.com/vi/1zFL9SFd54M/maxresdefault.jpg",
+    tags: ["Streaming", "Humor"],
+    clipInfo: {
+      es: "Canal: Niiniiwi",
+      en: "Channel: Niiniiwi"
+    },
+    link: "#",
+    isYoutube: true,
+    format: "video"
   }
 ];
 
@@ -90,8 +115,8 @@ export const professionalProjects = [
   {
     id: 1,
     title: {
-      es: "Ejemplo 1",
-      en: "Example 1"
+      es: "Cortometraje (Curita)",
+      en: "Short Film (Curita)"
     },
     category: {
       es: "Profesionalismo",

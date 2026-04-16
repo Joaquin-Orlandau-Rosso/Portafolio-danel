@@ -21,10 +21,23 @@ const TABS = {
   ],
 };
 
-function getFilteredProjects(tab) {
+const STREAMING_SUBTABS = {
+  es: [
+    { key: 'short', label: 'Shorts' },
+    { key: 'video', label: 'Videos YouTube' },
+  ],
+  en: [
+    { key: 'short', label: 'Shorts' },
+    { key: 'video', label: 'YouTube Videos' },
+  ],
+};
+
+function getFilteredProjects(tab, streamingSubTab) {
   if (tab === 'all') return allProjects;
   if (tab === 'professional') return professionalProjects;
-  if (tab === 'streaming') return streamingProjects;
+  if (tab === 'streaming') {
+    return streamingProjects.filter(p => p.format === streamingSubTab);
+  }
   if (tab === 'irl') return irlProjects;
   return allProjects;
 }
@@ -34,6 +47,7 @@ export default function Projects() {
   const t = translations[language];
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [activeTab, setActiveTab] = useState('all');
+  const [streamingSubTab, setStreamingSubTab] = useState('short');
 
   const getYouTubeId = (url) => {
     if (!url) return null;
@@ -56,8 +70,9 @@ export default function Projects() {
     document.body.style.overflow = 'auto';
   };
 
-  const filteredProjects = getFilteredProjects(activeTab);
+  const filteredProjects = getFilteredProjects(activeTab, streamingSubTab);
   const tabs = TABS[language] || TABS.es;
+  const streamingSubTabs = STREAMING_SUBTABS[language] || STREAMING_SUBTABS.es;
 
   return (
     <section id="projects" className="py-20 md:py-32 px-4 scroll-mt-20">
@@ -73,7 +88,7 @@ export default function Projects() {
         </div>
 
         {/* Filter tabs */}
-        <div className="flex justify-center mb-12 animate-in slide-in-from-bottom-4 duration-700">
+        <div className="flex justify-center mb-6 animate-in slide-in-from-bottom-4 duration-700">
           <div className="inline-flex gap-1 p-1 bg-gray-900/50 border border-gray-800 rounded-xl">
             {tabs.map(tab => (
               <button
@@ -91,8 +106,30 @@ export default function Projects() {
           </div>
         </div>
 
+        {/* Streaming sub-tabs */}
+        {activeTab === 'streaming' && (
+          <div className="flex justify-center mb-12 animate-in slide-in-from-bottom-4 duration-500">
+            <div className="inline-flex gap-1 p-1 bg-gray-900/30 border border-gray-800/50 rounded-lg">
+              {streamingSubTabs.map(subTab => (
+                <button
+                  key={subTab.key}
+                  onClick={() => setStreamingSubTab(subTab.key)}
+                  className={`px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 ${
+                    streamingSubTab === subTab.key
+                      ? 'bg-purple-500/20 text-purple-200 border border-purple-500/30'
+                      : 'text-gray-500 hover:text-gray-300 border border-transparent'
+                  }`}
+                >
+                  {subTab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+        {activeTab !== 'streaming' && <div className="mb-6" />}
+
         {/* Projects grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-14">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
@@ -118,14 +155,16 @@ export default function Projects() {
                 </div>
 
                 {/* Info with separator */}
-                <div className="p-5 pt-4">
-                  <div className="h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent mb-4" />
-                  <h3 className="font-semibold text-white mb-1.5 group-hover:text-purple-300 transition-colors duration-300">
+                <div className="p-6 pt-5">
+                  <div className="h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent mb-5" />
+                  <h3 className="font-bold text-lg mb-3 bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent group-hover:from-purple-200 group-hover:via-purple-300 group-hover:to-violet-400 transition-all duration-300">
                     {typeof project.title === 'object' ? project.title[language] || project.title['es'] : project.title}
                   </h3>
-                  <p className="text-purple-400 text-sm mb-3">
-                    {typeof project.category === 'object' ? project.category[language] || project.category['es'] : project.category}
-                  </p>
+                  <div className="mb-5">
+                    <span className="inline-block px-2.5 py-0.5 rounded-md text-xs font-semibold bg-gradient-to-r from-purple-500/20 to-violet-500/20 text-purple-200 border border-purple-500/30">
+                      {typeof project.category === 'object' ? project.category[language] || project.category['es'] : project.category}
+                    </span>
+                  </div>
 
                   {/* Clip info link */}
                   {project.clipInfo && (
@@ -135,20 +174,20 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 text-purple-400 hover:text-purple-300 text-xs font-medium mb-3 transition-colors duration-200"
+                        className="inline-flex items-center gap-1.5 text-purple-400 hover:text-purple-300 text-xs font-medium mb-5 transition-colors duration-200"
                       >
                         {typeof project.clipInfo === 'object' ? project.clipInfo[language] || project.clipInfo['es'] : project.clipInfo}
                         <ExternalLink size={12} />
                       </a>
                     ) : (
-                      <p className="text-gray-500 text-xs mb-3">
+                      <p className="text-gray-500 text-xs mb-5">
                         {typeof project.clipInfo === 'object' ? project.clipInfo[language] || project.clipInfo['es'] : project.clipInfo}
                       </p>
                     )
                   )}
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-2">
                     {project.tags.filter(tag => {
                       if (language === 'es') {
                         return ['Manualidad', 'Arte', 'Trabajo', 'League of Legends', 'Humor', 'Anecdota', 'Streaming'].includes(tag);

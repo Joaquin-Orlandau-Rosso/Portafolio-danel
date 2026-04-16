@@ -44,7 +44,7 @@ export const translations = {
         editingTools: {
           title: 'Herramientas de Edición',
           icon: '🎬',
-          items: ['Cap Cut', 'After Effects','Final Cut Pro','Photoshop']
+          items: ['Cap Cut', 'After Effects','Adobe Premiere Pro','Photoshop']
         },
         specialties: {
           title: 'Especialidades',
@@ -85,7 +85,6 @@ export const translations = {
         title: 'Videos Largos (YouTube)',
         consult: 'Consultar',
         features: [
-          'Sin ejemplos disponibles actualmente',
           'Precio según duración y nivel de edición'
         ]
       }
@@ -146,7 +145,7 @@ export const translations = {
         editingTools: {
           title: 'Editing Tools',
           icon: '🎬',
-          items: ['Adobe Premiere Pro', 'After Effects', 'DaVinci Resolve', 'Final Cut Pro']
+          items: ['Adobe Premiere Pro', 'After Effects', 'DaVinci Resolve', 'Photoshop']
         },
         specialties: {
           title: 'Specialties',
@@ -187,7 +186,6 @@ export const translations = {
         title: 'Long Videos (YouTube)',
         consult: 'Consult',
         features: [
-          'No examples available currently',
           'Price based on duration and editing level'
         ]
       }
