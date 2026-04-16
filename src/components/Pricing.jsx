@@ -17,7 +17,7 @@ export default function Pricing() {
     },
     {
       title: t.pricing.shorts.title,
-      price: '7-10',
+      price: '6-10',
       currency: 'USD',
       features: t.pricing.shorts.features,
       featured: false,

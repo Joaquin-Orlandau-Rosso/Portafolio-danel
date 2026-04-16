@@ -84,6 +84,7 @@ export const streamingProjects = [
       es: "Clip de Sana",
       en: "Clip by Sana"
     },
+    clipLink: "https://www.tiktok.com/@sana.numachi/video/7557068799338450187",
     link: "#",
     isYoutube: true,
     format: "short"
@@ -105,6 +106,7 @@ export const streamingProjects = [
       es: "Canal: Niiniiwi",
       en: "Channel: Niiniiwi"
     },
+    clipLink: "https://www.youtube.com/watch?v=1zFL9SFd54M&t=13s",
     link: "#",
     isYoutube: true,
     format: "video"

@@ -140,12 +140,12 @@ export const translations = {
     // Skills Section
     skills: {
       title: 'Skills',
-      subtitle: 'Tools and technologies I master to create exceptional content',
+      subtitle: 'Tools and technologies I\'ve mastered to create exceptional content',
       categories: {
         editingTools: {
           title: 'Editing Tools',
           icon: '🎬',
-          items: ['Adobe Premiere Pro', 'After Effects', 'DaVinci Resolve', 'Photoshop']
+          items: ['Cap Cut', 'After Effects', 'Adobe Premiere Pro', 'Photoshop']
         },
         specialties: {
           title: 'Specialties',
@@ -155,7 +155,7 @@ export const translations = {
         certifications: {
           title: 'Certifications',
           icon: '🏆',
-          items: ['Adobe Certified Expert', 'DaVinci Resolve Certified', 'Avid Media Composer']
+          items: ['Technician in Image, Sound and Multimedia Design (UNNE)']
         }
       }
     },
