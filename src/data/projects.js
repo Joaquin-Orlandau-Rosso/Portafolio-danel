@@ -48,8 +48,8 @@ export const streamingProjects = [
   {
     id: 4,
     title: {
-      es: "Clip Destacado de Verdulero",
-      en: "Featured Clip from Verdulero"
+      es: "Clip Destacado de Danez",
+      en: "Featured Clip from Danez"
     },
     category: {
       es: "Ejemplo 4",

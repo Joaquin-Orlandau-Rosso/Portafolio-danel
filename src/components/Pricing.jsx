@@ -9,18 +9,18 @@ export default function Pricing() {
 
   const plans = [
     {
+      title: t.pricing.professional.title,
+      price: t.pricing.professional.custom,
+      currency: '',
+      features: t.pricing.professional.features,
+      featured: false,
+    },
+    {
       title: t.pricing.shorts.title,
       price: '7-10',
       currency: 'USD',
       features: t.pricing.shorts.features,
       featured: false,
-    },
-    {
-      title: t.pricing.professional.title,
-      price: t.pricing.professional.custom,
-      currency: '',
-      features: t.pricing.professional.features,
-      featured: true,
     },
     {
       title: t.pricing.longVideos.title,
