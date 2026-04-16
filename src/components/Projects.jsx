@@ -8,16 +8,14 @@ const allProjects = [...professionalProjects, ...streamingProjects, ...irlProjec
 
 const TABS = {
   es: [
-    { key: 'all', label: 'Todos' },
-    { key: 'professional', label: 'Profesional' },
     { key: 'streaming', label: 'Redes' },
     { key: 'irl', label: 'IRL' },
+    { key: 'professional', label: 'Profesional' },
   ],
   en: [
-    { key: 'all', label: 'All' },
-    { key: 'professional', label: 'Professional' },
     { key: 'streaming', label: 'Social Media' },
     { key: 'irl', label: 'IRL' },
+    { key: 'professional', label: 'Professional' },
   ],
 };
 
@@ -46,12 +44,12 @@ export default function Projects() {
   const { language } = useLanguage();
   const t = translations[language];
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState('streaming');
   const [streamingSubTab, setStreamingSubTab] = useState('short');
 
   const getYouTubeId = (url) => {
     if (!url) return null;
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|shorts\/|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
     return (match && match[2].length === 11) ? match[2] : null;
   };
@@ -130,7 +128,10 @@ export default function Projects() {
 
         {/* Projects grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-14">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project) => {
+            const isYoutubeThumb = typeof project.image === 'string' && project.image.includes('img.youtube.com');
+            const useCover = isYoutubeThumb && project.format === 'short';
+            return (
             <div
               key={project.id}
               className="group cursor-pointer animate-in slide-in-from-bottom-4 duration-500"
@@ -140,10 +141,18 @@ export default function Projects() {
                 {/* Thumbnail container with padding */}
                 <div className="p-4 pb-0">
                   <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gray-800">
+                    {!useCover && (
+                      <img
+                        src={project.image}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-60"
+                      />
+                    )}
                     <img
                       src={project.image}
                       alt={typeof project.title === 'object' ? project.title[language] || project.title['es'] : project.title}
-                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                      className={`relative w-full h-full ${useCover ? 'object-cover' : 'object-contain'} transition-transform duration-500 group-hover:scale-105`}
                     />
                     {/* Overlay on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -160,11 +169,13 @@ export default function Projects() {
                   <h3 className="font-bold text-lg mb-3 bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent group-hover:from-purple-200 group-hover:via-purple-300 group-hover:to-violet-400 transition-all duration-300">
                     {typeof project.title === 'object' ? project.title[language] || project.title['es'] : project.title}
                   </h3>
-                  <div className="mb-5">
-                    <span className="inline-block px-2.5 py-0.5 rounded-md text-xs font-semibold bg-gradient-to-r from-purple-500/20 to-violet-500/20 text-purple-200 border border-purple-500/30">
-                      {typeof project.category === 'object' ? project.category[language] || project.category['es'] : project.category}
-                    </span>
-                  </div>
+                  {project.category && (
+                    <div className="mb-5">
+                      <span className="inline-block px-2.5 py-0.5 rounded-md text-xs font-semibold bg-gradient-to-r from-purple-500/20 to-violet-500/20 text-purple-200 border border-purple-500/30">
+                        {typeof project.category === 'object' ? project.category[language] || project.category['es'] : project.category}
+                      </span>
+                    </div>
+                  )}
 
                   {/* Clip info link */}
                   {project.clipInfo && (
@@ -190,9 +201,9 @@ export default function Projects() {
                   <div className="flex flex-wrap gap-2">
                     {project.tags.filter(tag => {
                       if (language === 'es') {
-                        return ['Manualidad', 'Arte', 'Trabajo', 'League of Legends', 'Humor', 'Anecdota', 'Streaming'].includes(tag);
+                        return ['Manualidad', 'Arte', 'Artesania', 'Trabajo', 'League of Legends', 'Humor', 'Anecdota', 'Streaming'].includes(tag);
                       }
-                      return ['Craft', 'Art', 'Work', 'Humor', 'Streaming'].includes(tag);
+                      return ['Craft', 'Art', 'Handicraft', 'Work', 'Humor', 'Streaming'].includes(tag);
                     }).map((tag, i) => (
                       <span key={i} className="px-2.5 py-1 bg-purple-500/10 text-purple-300 rounded-md text-xs font-medium border border-purple-500/10">
                         {tag}
@@ -202,7 +213,8 @@ export default function Projects() {
                 </div>
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
       </div>
 

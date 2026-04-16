@@ -8,17 +8,83 @@ export const streamingProjects = [
       en: "Teasing Friends"
     },
     category: {
-      es: "Ejemplo 2",
-      en: "Example 2"
+      es: "Ejemplo 1",
+      en: "Example 1"
     },
     video: "https://www.youtube.com/watch?v=OqHrIP7x12A",
     image: "/images/Frente.jpg",
     tags: ["League of Legends", "Humor"],
     clipInfo: {
+      es: "Clip de Fuvu y Danez43",
+      en: "Clip by Fuvu and Danez43"
+    },
+    clipLink: "https://www.instagram.com/p/DOW2dsAgXpJ/",
+    link: "#",
+    isYoutube: true,
+    format: "short"
+  },
+  {
+    id: 5,
+    title: {
+      es: "Clip Destacado de Sana",
+      en: "Featured Clip from Sana"
+    },
+    category: {
+      es: "Ejemplo 2",
+      en: "Example 2"
+    },
+    video: "https://www.youtube.com/watch?v=M1983cFqy4Y",
+    image: "/images/loli_mafiosa_miniatura.jpg",
+    tags: ["Streaming", "Humor"],
+    clipInfo: {
+      es: "Clip de Sana",
+      en: "Clip by Sana"
+    },
+    clipLink: "https://www.tiktok.com/@sana.numachi/video/7557068799338450187",
+    link: "#",
+    isYoutube: true,
+    format: "short"
+  },
+  {
+    id: 9,
+    title: {
+      es: "Clip Destacado de Cocoggy",
+      en: "Featured Clip from Cocoggy"
+    },
+    category: {
+      es: "Ejemplo 3",
+      en: "Example 3"
+    },
+    video: "https://www.youtube.com/shorts/ND25f4lcfeI",
+    image: "https://img.youtube.com/vi/ND25f4lcfeI/maxresdefault.jpg",
+    tags: ["Streaming", "Humor"],
+    clipInfo: {
+      es: "Clip de Cocoggy",
+      en: "Clip by Cocoggy"
+    },
+    clipLink: "https://www.tiktok.com/@cocoggy/video/7601944378000575756",
+    link: "#",
+    isYoutube: true,
+    format: "short"
+  },
+  {
+    id: 10,
+    title: {
+      es: "Short Destacado",
+      en: "Featured Short"
+    },
+    category: {
+      es: "Ejemplo 4",
+      en: "Example 4"
+    },
+    video: "https://www.youtube.com/shorts/GuvJ8y_Eqt8",
+    image: "/images/3 wards.png",
+    tags: ["Streaming", "Humor"],
+    clipInfo: {
       es: "Clip de Danez43",
       en: "Clip by Danez43"
     },
-    clipLink: "https://www.instagram.com/danez43_44/",
+    clipLink: "https://www.instagram.com/p/DSddWTkgsq_/",
     link: "#",
     isYoutube: true,
     format: "short"
@@ -30,8 +96,8 @@ export const streamingProjects = [
       en: "Featured Clip from Fuvu"
     },
     category: {
-      es: "Ejemplo 3",
-      en: "Example 3"
+      es: "Ejemplo 5",
+      en: "Example 5"
     },
     video: "https://www.youtube.com/watch?v=zzoIKLQhoqU",
     image: "/images/fuvu perro.jpg",
@@ -52,8 +118,8 @@ export const streamingProjects = [
       en: "Featured Clip from Danez"
     },
     category: {
-      es: "Ejemplo 4",
-      en: "Example 4"
+      es: "Ejemplo 6",
+      en: "Example 6"
     },
     video: "https://www.youtube.com/watch?v=TTdzua7PLaM",
     image: "/images/el_verdulero.jpg",
@@ -62,29 +128,7 @@ export const streamingProjects = [
       es: "Clip de Danez43",
       en: "Clip by Danez43"
     },
-    clipLink: "https://www.instagram.com/danez43_44/",
-    link: "#",
-    isYoutube: true,
-    format: "short"
-  },
-  {
-    id: 5,
-    title: {
-      es: "Clip Destacado de Sana",
-      en: "Featured Clip from Sana"
-    },
-    category: {
-      es: "Ejemplo 5",
-      en: "Example 5"
-    },
-    video: "https://www.youtube.com/watch?v=M1983cFqy4Y",
-    image: "/images/loli_mafiosa_miniatura.jpg",
-    tags: ["Streaming", "Humor"],
-    clipInfo: {
-      es: "Clip de Sana",
-      en: "Clip by Sana"
-    },
-    clipLink: "https://www.tiktok.com/@sana.numachi/video/7557068799338450187",
+    clipLink: "https://www.instagram.com/p/DPUZxSuARZz/",
     link: "#",
     isYoutube: true,
     format: "short"
@@ -143,16 +187,12 @@ export const irlProjects = [
       es: "Trabajo de manualidad",
       en: "Craft Work"
     },
-    category: {
-      es: "Manualidad",
-      en: "Craft"
-    },
     video: "https://www.youtube.com/watch?v=Lsby2lWpxCo",
     image: "/images/calabaza.jpg",
-    tags: ["Manualidad", "Arte", "Craft", "Art"],
+    tags: ["Manualidad", "Arte", "Artesania", "Craft", "Art", "Handicraft"],
     clipInfo: {
-      es: "Artesania",
-      en: "Handicraft"
+      es: "Trabajo realizado: corrección de color y corte",
+      en: "Work done: color correction and editing"
     },
     link: "#",
     isYoutube: true
@@ -163,16 +203,12 @@ export const irlProjects = [
       es: "Bandeja de caramelo",
       en: "Candy Tray"
     },
-    category: {
-      es: "Manualidad",
-      en: "Craft"
-    },
     video: "https://www.youtube.com/watch?v=lKockneAvYA",
     image: "/images/bandeja caramelo.jpg",
-    tags: ["Manualidad", "Arte", "Craft", "Art"],
+    tags: ["Manualidad", "Arte", "Artesania", "Craft", "Art", "Handicraft"],
     clipInfo: {
-      es: "Artesania",
-      en: "Handicraft"
+      es: "Trabajo realizado: corrección de color y corte",
+      en: "Work done: color correction and editing"
     },
     link: "#",
     isYoutube: true
