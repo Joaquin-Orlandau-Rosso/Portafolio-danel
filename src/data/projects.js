@@ -136,8 +136,8 @@ export const streamingProjects = [
   {
     id: 8,
     title: {
-      es: "PEAK",
-      en: "PEAK"
+      es: "PEAK (gameplay)",
+      en: "PEAK (gameplay)"
     },
     category: {
       es: "Video de YouTube",
@@ -145,12 +145,56 @@ export const streamingProjects = [
     },
     video: "https://www.youtube.com/watch?v=1zFL9SFd54M",
     image: "https://img.youtube.com/vi/1zFL9SFd54M/maxresdefault.jpg",
-    tags: ["Streaming", "Humor"],
+    tags: ["Edicion simple", "Simple Editing"],
     clipInfo: {
       es: "Canal: Niiniiwi",
       en: "Channel: Niiniiwi"
     },
     clipLink: "https://www.youtube.com/watch?v=1zFL9SFd54M&t=13s",
+    link: "#",
+    isYoutube: true,
+    format: "video"
+  },
+  {
+    id: 11,
+    title: {
+      es: "Minecraft y el arte de contar mil veces una misma historia (storytelling)",
+      en: "Minecraft and the art of telling the same story a thousand times (storytelling)"
+    },
+    category: {
+      es: "Video de YouTube",
+      en: "YouTube Video"
+    },
+    video: "https://www.youtube.com/watch?v=2VcGkyLoI6k&t=4s",
+    image: "https://img.youtube.com/vi/2VcGkyLoI6k/maxresdefault.jpg",
+    tags: ["Edicion compleja", "Complex Editing"],
+    clipInfo: {
+      es: "Canal: Danez43",
+      en: "Channel: Danez43"
+    },
+    clipLink: "https://www.youtube.com/watch?v=2VcGkyLoI6k&t=4s",
+    link: "#",
+    isYoutube: true,
+    format: "video"
+  },
+  {
+    id: 12,
+    title: {
+      es: "Puntando los ALFAJORES ARGENTINOS (charla humoristica)",
+      en: "Rating ARGENTINE ALFAJORES (humorous talk)"
+    },
+    category: {
+      es: "Video de YouTube",
+      en: "YouTube Video"
+    },
+    video: "https://www.youtube.com/watch?v=hfyngrnqSxs",
+    image: "https://img.youtube.com/vi/hfyngrnqSxs/maxresdefault.jpg",
+    tags: ["Edicion simple", "Simple Editing"],
+    clipInfo: {
+      es: "Canal: Danez43",
+      en: "Channel: Danez43"
+    },
+    clipLink: "https://www.youtube.com/watch?v=hfyngrnqSxs",
     link: "#",
     isYoutube: true,
     format: "video"

@@ -134,10 +134,10 @@ export default function Projects() {
             return (
             <div
               key={project.id}
-              className="group cursor-pointer animate-in slide-in-from-bottom-4 duration-500"
+              className="group cursor-pointer animate-in slide-in-from-bottom-4 duration-500 h-full"
               onClick={() => openModal(project)}
             >
-              <div className="relative rounded-2xl overflow-hidden border border-gray-800/50 hover:border-purple-500/30 bg-[#12121a] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10">
+              <div className="relative h-full flex flex-col rounded-2xl overflow-hidden border border-gray-800/50 hover:border-purple-500/30 bg-[#12121a] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10">
                 {/* Thumbnail container with padding */}
                 <div className="p-4 pb-0">
                   <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gray-800">
@@ -201,9 +201,9 @@ export default function Projects() {
                   <div className="flex flex-wrap gap-2">
                     {project.tags.filter(tag => {
                       if (language === 'es') {
-                        return ['Manualidad', 'Arte', 'Artesania', 'Trabajo', 'League of Legends', 'Humor', 'Anecdota', 'Streaming'].includes(tag);
+                        return ['Manualidad', 'Arte', 'Artesania', 'Trabajo', 'League of Legends', 'Humor', 'Anecdota', 'Streaming', 'Edicion simple', 'Edicion compleja'].includes(tag);
                       }
-                      return ['Craft', 'Art', 'Handicraft', 'Work', 'Humor', 'Streaming'].includes(tag);
+                      return ['Craft', 'Art', 'Handicraft', 'Work', 'Humor', 'Streaming', 'Simple Editing', 'Complex Editing'].includes(tag);
                     }).map((tag, i) => (
                       <span key={i} className="px-2.5 py-1 bg-purple-500/10 text-purple-300 rounded-md text-xs font-medium border border-purple-500/10">
                         {tag}
