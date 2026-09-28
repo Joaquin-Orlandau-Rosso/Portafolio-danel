@@ -4,8 +4,8 @@ export const streamingProjects = [
   {
     id: 2,
     title: {
-      es: "Partida en dúo con FuvuVT",
-      en: "Duo Match with FuvuVT"
+      es: "Molestando a Amigos",
+      en: "Teasing Friends"
     },
     category: {
       es: "Collab",
@@ -27,8 +27,8 @@ export const streamingProjects = [
   {
     id: 5,
     title: {
-      es: "Jumpscare en vivo",
-      en: "Live Jumpscare"
+      es: "Clip Destacado de Sana",
+      en: "Featured Clip from Sana"
     },
     category: {
       es: "Juego de terror",
@@ -50,8 +50,8 @@ export const streamingProjects = [
   {
     id: 9,
     title: {
-      es: "Respondiendo al chat en vivo",
-      en: "Answering Live Chat"
+      es: "Clip Destacado de Zago",
+      en: "Featured Clip from Zago"
     },
     category: {
       es: "Interacción con el chat",
@@ -73,8 +73,8 @@ export const streamingProjects = [
   {
     id: 10,
     title: {
-      es: "Pelea por el dragón",
-      en: "Dragon Fight"
+      es: "Short Destacado",
+      en: "Featured Short"
     },
     category: {
       es: "Gameplay",
@@ -96,8 +96,8 @@ export const streamingProjects = [
   {
     id: 4,
     title: {
-      es: "Humor en partida de League of Legends",
-      en: "Comedy in a League of Legends Match"
+      es: "Clip Destacado de Danez",
+      en: "Featured Clip from Danez"
     },
     category: {
       es: "Gameplay",
@@ -183,8 +183,74 @@ export const streamingProjects = [
     format: "video"
   },
   {
+    id: 27,
+    title: {
+      es: "Siendo esclavizado de 1000 formas distintas | Carpincho SMP",
+      en: "Enslaved in 1,000 Different Ways | Carpincho SMP"
+    },
+    category: {
+      es: "Gameplay",
+      en: "Gameplay"
+    },
+    video: "https://www.youtube.com/watch?v=UWBVLmjHRtU",
+    image: "https://img.youtube.com/vi/UWBVLmjHRtU/maxresdefault.jpg",
+    tags: ["Minecraft", "Humor"],
+    clipInfo: {
+      es: "Canal: ZagoNor",
+      en: "Channel: ZagoNor"
+    },
+    clipLink: "https://www.youtube.com/watch?v=UWBVLmjHRtU",
+    link: "#",
+    isYoutube: true,
+    format: "video"
+  },
+  {
+    id: 28,
+    title: {
+      es: "GTA 6 rompe el concepto de mundo abierto",
+      en: "GTA 6 Breaks the Open-World Concept"
+    },
+    category: {
+      es: "Análisis",
+      en: "Analysis"
+    },
+    video: "https://www.youtube.com/watch?v=WLnLY4yfrro",
+    image: "https://img.youtube.com/vi/WLnLY4yfrro/maxresdefault.jpg",
+    tags: ["GTA 6"],
+    clipInfo: {
+      es: "Canal: Código VI",
+      en: "Channel: Código VI"
+    },
+    clipLink: "https://www.youtube.com/watch?v=WLnLY4yfrro",
+    link: "#",
+    isYoutube: true,
+    format: "video"
+  },
+  {
+    id: 29,
+    title: {
+      es: "GTA 6 está llevando la vida salvaje a un nivel absurdo",
+      en: "GTA 6 Is Taking Wildlife to an Absurd Level"
+    },
+    category: {
+      es: "Análisis",
+      en: "Analysis"
+    },
+    video: "https://www.youtube.com/watch?v=XY61DFGMVz4",
+    image: "https://img.youtube.com/vi/XY61DFGMVz4/maxresdefault.jpg",
+    tags: ["GTA 6"],
+    clipInfo: {
+      es: "Canal: Código VI",
+      en: "Channel: Código VI"
+    },
+    clipLink: "https://www.youtube.com/watch?v=XY61DFGMVz4",
+    link: "#",
+    isYoutube: true,
+    format: "video"
+  },
+  {
     id: 20,
-    title: { es: "Evolución en Cobblemon", en: "Evolution in Cobblemon" },
+    title: { es: "Clip de Zago 2", en: "Clip by Zago 2" },
     category: { es: "Gameplay", en: "Gameplay" },
     video: "https://www.instagram.com/p/DZx-yF_B5eE/",
     image: "/images/ig_DZx-yF_B5eE.jpg",
@@ -198,7 +264,7 @@ export const streamingProjects = [
   },
   {
     id: 21,
-    title: { es: "La carta del esqueleto", en: "The Skeleton's Letter" },
+    title: { es: "Clip de Zago 3", en: "Clip by Zago 3" },
     category: { es: "Gameplay", en: "Gameplay" },
     video: "https://www.instagram.com/p/DYp4lHqhmCb/",
     image: "/images/ig_DYp4lHqhmCb.jpg",
@@ -212,7 +278,7 @@ export const streamingProjects = [
   },
   {
     id: 22,
-    title: { es: "Reacción a un mensaje del chat", en: "Reacting to a Chat Message" },
+    title: { es: "Clip de Sana 2", en: "Clip by Sana 2" },
     category: { es: "Interacción con el chat", en: "Chat interaction" },
     video: "https://www.instagram.com/p/DQcgQc5DnVA/",
     image: "/images/ig_DQcgQc5DnVA.jpg",
@@ -226,7 +292,7 @@ export const streamingProjects = [
   },
   {
     id: 23,
-    title: { es: "Reto del chat durante un juego de terror", en: "Chat Challenge During a Horror Game" },
+    title: { es: "Clip de Sana 3", en: "Clip by Sana 3" },
     category: { es: "Canje de puntos", en: "Channel points" },
     video: "https://www.instagram.com/p/DPHUI47jiKP/",
     image: "/images/ig_DPHUI47jiKP.jpg",
@@ -240,7 +306,7 @@ export const streamingProjects = [
   },
   {
     id: 24,
-    title: { es: "Un recuerdo de la infancia", en: "A Childhood Memory" },
+    title: { es: "Clip Destacado de Fuvu", en: "Featured Clip from Fuvu" },
     category: { es: "Anécdota", en: "Storytime" },
     video: "https://www.instagram.com/p/DS0gV1zCKcd/",
     image: "/images/ig_DS0gV1zCKcd.jpg",
@@ -254,7 +320,7 @@ export const streamingProjects = [
   },
   {
     id: 25,
-    title: { es: "Una historia con la mascota", en: "A Story About the Dog" },
+    title: { es: "Clip de Fuvu 2", en: "Clip by Fuvu 2" },
     category: { es: "Anécdota", en: "Storytime" },
     video: "https://www.instagram.com/p/DPmkxeYkeMi/",
     image: "/images/ig_DPmkxeYkeMi.jpg",
@@ -268,7 +334,7 @@ export const streamingProjects = [
   },
   {
     id: 26,
-    title: { es: "Collab en Minecraft", en: "Minecraft Collab" },
+    title: { es: "Clip de Fuvu 3", en: "Clip by Fuvu 3" },
     category: { es: "Gameplay", en: "Gameplay" },
     video: "https://www.instagram.com/p/DTYoBbhCGVm/",
     image: "/images/ig_DTYoBbhCGVm.jpg",

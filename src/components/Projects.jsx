@@ -444,9 +444,17 @@ export default function Projects() {
                 </Reveal>
               )}
 
-              {/* Sus videos */}
+              {/* Sus videos. Cada tarjeta ocupa 4 filas del grid (miniatura,
+                  titulo, etiqueta, pie) y las comparte con las de al lado
+                  mediante subgrid: la fila del titulo mide lo que el titulo
+                  mas largo, asi la etiqueta y el link quedan a la par en toda
+                  la fila aunque un titulo ocupe una linea y otro tres. La
+                  separacion entre filas de tarjetas va como margen (mb-14) y
+                  no como gap, porque el gap se meteria tambien entre las 4
+                  filas internas de cada tarjeta; el -mb-14 del grid descuenta
+                  el de la ultima fila. */}
               <div
-                className={`grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-14 ${
+                className={`grid grid-cols-1 sm:grid-cols-2 gap-x-12 -mb-14 ${
                   grupo.projects.length <= 2 ? 'max-w-3xl mx-auto' : 'lg:grid-cols-3'
                 }`}
               >
@@ -458,10 +466,10 @@ export default function Projects() {
                 <Reveal
                   key={`${track}-${project.id}`}
                   delay={(index % 3) * 90}
-                  className="group cursor-pointer h-full"
+                  className="group cursor-pointer row-span-4 grid grid-rows-subgrid gap-y-0 mb-14"
                   onClick={() => openModal(project)}
                 >
-                  <div className="relative h-full flex flex-col rounded-2xl overflow-hidden border border-gray-800/50 hover:border-purple-500/30 bg-[#12121a] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10">
+                  <div className="relative row-span-4 grid grid-rows-subgrid gap-y-0 rounded-2xl overflow-hidden border border-gray-800/50 hover:border-purple-500/30 bg-[#12121a] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10">
                     {/* Thumbnail container with padding */}
                     <div className="p-4 pb-0">
                       <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gray-800">
@@ -489,12 +497,17 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Info with separator */}
-                    <div className="p-6 pt-5">
+                    {/* Fila 2: separador + titulo */}
+                    <div className="px-6 pt-5">
                       <div className="h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent mb-5" />
                       <h3 className="font-bold text-lg mb-3 bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent group-hover:from-purple-200 group-hover:via-purple-300 group-hover:to-violet-400 transition-all duration-300">
                         {typeof project.title === 'object' ? project.title[language] || project.title['es'] : project.title}
                       </h3>
+                    </div>
+
+                    {/* Fila 3: etiqueta. El div va siempre, aunque no haya
+                        etiqueta, para que la tarjeta tenga sus 4 filas. */}
+                    <div className="px-6">
                       {project.category && (
                         <div className="mb-5">
                           <span className="inline-block px-2.5 py-0.5 rounded-md text-xs font-semibold bg-gradient-to-r from-purple-500/20 to-violet-500/20 text-purple-200 border border-purple-500/30">
@@ -502,27 +515,13 @@ export default function Projects() {
                           </span>
                         </div>
                       )}
+                    </div>
 
-                      {/* Clip info link */}
-                      {project.clipInfo && (
-                        project.clipLink ? (
-                          <a
-                            href={project.clipLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 text-purple-400 hover:text-purple-300 text-xs font-medium mb-5 transition-colors duration-200"
-                          >
-                            {typeof project.clipInfo === 'object' ? project.clipInfo[language] || project.clipInfo['es'] : project.clipInfo}
-                            <ExternalLink size={12} />
-                          </a>
-                        ) : (
-                          <p className="text-gray-500 text-xs mb-5">
-                            {typeof project.clipInfo === 'object' ? project.clipInfo[language] || project.clipInfo['es'] : project.clipInfo}
-                          </p>
-                        )
-                      )}
-
+                    {/* Fila 4, el pie: tags y, como ultimo renglon, el link al
+                        video. Va pegado al fondo (self-end) y el link es lo
+                        ultimo a proposito: asi queda a la par aunque las tags
+                        de otra tarjeta ocupen dos renglones. */}
+                    <div className="px-6 pb-6 self-end">
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2">
                         {project.tags.filter(tag => {
@@ -537,6 +536,26 @@ export default function Projects() {
                           </span>
                         ))}
                       </div>
+
+                      {/* Clip info link */}
+                      {project.clipInfo && (
+                        project.clipLink ? (
+                          <a
+                            href={project.clipLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex w-fit items-center gap-1.5 text-purple-400 hover:text-purple-300 text-xs font-medium mt-4 transition-colors duration-200"
+                          >
+                            {typeof project.clipInfo === 'object' ? project.clipInfo[language] || project.clipInfo['es'] : project.clipInfo}
+                            <ExternalLink size={12} />
+                          </a>
+                        ) : (
+                          <p className="text-gray-500 text-xs mt-4">
+                            {typeof project.clipInfo === 'object' ? project.clipInfo[language] || project.clipInfo['es'] : project.clipInfo}
+                          </p>
+                        )
+                      )}
                     </div>
                   </div>
                 </Reveal>
