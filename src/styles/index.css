@@ -12,6 +12,9 @@ html {
 html,
 body {
   background-color: #0a0a0f;
+  /* Las animaciones de entrada desplazan cosas hacia los costados; esto evita
+     que en el celular aparezca scroll horizontal mientras entran */
+  overflow-x: clip;
 }
 
 * {
@@ -149,3 +152,160 @@ section {
 .delay-700 { animation-delay: 700ms; }
 .delay-1000 { animation-delay: 1000ms; }
 .delay-1200 { animation-delay: 1200ms; }
+
+/* Desfase de los blobs del hero (sin esto se mueven los tres a la par) */
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* Selección y scrollbar con los colores del sitio */
+::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a855f7, #d946ef);
+  border: 2px solid #0a0a0f;
+  border-radius: 999px;
+}
+
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-color: #8b5cf6 #0a0a0f;
+    scrollbar-width: thin;
+  }
+}
+
+/* Aparición al hacer scroll (ver components/Reveal.jsx) */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-up { transform: translateY(28px); }
+.reveal-left { transform: translateX(-32px); }
+.reveal-right { transform: translateX(32px); }
+.reveal-scale { transform: scale(0.92); }
+.reveal-blur { transform: translateY(12px); filter: blur(8px); }
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Subrayado degradado de los títulos: crece cuando aparece la sección */
+.reveal .reveal-line {
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+
+.reveal.is-visible .reveal-line {
+  transform: scaleX(1);
+}
+
+/* Hijos escalonados: cada uno define --i; arrancan después de su contenedor */
+.reveal .reveal-child {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: calc(var(--reveal-delay, 0ms) + 250ms + var(--i, 0) * 70ms);
+}
+
+.reveal.is-visible .reveal-child {
+  opacity: 1;
+  transform: none;
+}
+
+/* Texto con degradado que se desplaza */
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradientShift 6s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+/* Destello que cruza el botón al pasar el mouse */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* Ítems del menú mobile, escalonados */
+.mobile-menu-item {
+  opacity: 0;
+  animation: slideDown 0.25s ease forwards;
+}
+
+/* Modal de video */
+.modal-backdrop {
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-panel {
+  animation: modalIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Quien pide menos movimiento en el sistema ve todo quieto */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal .reveal-child,
+  .reveal .reveal-line {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}

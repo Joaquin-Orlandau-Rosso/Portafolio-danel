@@ -3,6 +3,8 @@ import { Play, X, ExternalLink, Radio, Clapperboard, ArrowRight, ArrowLeft } fro
 import { streamingProjects, professionalProjects, irlProjects } from '../data/projects';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../languages/translations';
+import Reveal from './Reveal';
+import SectionHeader from './SectionHeader';
 
 const socialCount = streamingProjects.length + irlProjects.length;
 const professionalCount = professionalProjects.length;
@@ -302,19 +304,11 @@ export default function Projects() {
   return (
     <section ref={sectionRef} id="projects" className="py-20 md:py-32 px-4 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <span className="text-purple-400 text-sm font-semibold tracking-widest uppercase">
-            Portfolio
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-3 animate-in slide-in-from-bottom-4 duration-500">
-            {t.projects.title}
-          </h2>
-        </div>
+        <SectionHeader eyebrow="Portfolio" title={t.projects.title} className="mb-12" />
 
         {/* Step 1: category chooser */}
         {!track && (
-          <div className="animate-in slide-in-from-bottom-4 duration-500">
+          <Reveal>
             <div className="text-center mb-10">
               <p className="text-xl md:text-2xl font-semibold text-white">{copy.prompt}</p>
               <p className="text-gray-500 text-sm mt-2">{copy.hint}</p>
@@ -324,7 +318,7 @@ export default function Projects() {
               {trackCard('social', Radio)}
               {trackCard('professional', Clapperboard)}
             </div>
-          </div>
+          </Reveal>
         )}
 
         {/* Step 2: selected category */}
@@ -332,13 +326,20 @@ export default function Projects() {
           <div className="animate-in slide-in-from-bottom-4 duration-500">
             {/* Back + switch bar */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+              {/* Borde degradado: el padding de 1px deja ver el fondo del botón */}
               <button
                 type="button"
                 onClick={resetTrack}
-                className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                className="group relative inline-flex rounded-full p-px bg-gradient-to-r from-purple-500 via-violet-500 to-fuchsia-500 shadow-lg shadow-purple-500/10 transition-all duration-300 hover:shadow-purple-500/30 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60"
               >
-                <ArrowLeft size={16} />
-                {copy.back}
+                <span className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#1c1030] via-[#14121c] to-[#241030] px-5 py-2.5 text-sm font-semibold">
+                  {/* Brillo al pasar el mouse (los degradados no se animan, la opacidad sí) */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-purple-600/40 via-violet-600/20 to-fuchsia-600/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <ArrowLeft size={16} className="relative text-purple-300 transition-transform duration-300 group-hover:-translate-x-1" />
+                  <span className="relative bg-gradient-to-r from-white via-purple-100 to-fuchsia-200 bg-clip-text text-transparent">
+                    {copy.back}
+                  </span>
+                </span>
               </button>
 
               <div className="inline-flex gap-1 p-1 bg-gray-900/50 border border-gray-800 rounded-xl">
@@ -415,7 +416,7 @@ export default function Projects() {
 
               {/* Círculo del perfil */}
               {grupo.creator && (
-                <div className="flex justify-center mb-10">
+                <Reveal variant="scale" className="flex justify-center mb-10">
                   <a
                     href={grupo.creator.url}
                     target="_blank"
@@ -440,7 +441,7 @@ export default function Projects() {
                       </span>
                     </span>
                   </a>
-                </div>
+                </Reveal>
               )}
 
               {/* Sus videos */}
@@ -449,13 +450,15 @@ export default function Projects() {
                   grupo.projects.length <= 2 ? 'max-w-3xl mx-auto' : 'lg:grid-cols-3'
                 }`}
               >
-              {grupo.projects.map((project) => {
+              {grupo.projects.map((project, index) => {
                 const isYoutubeThumb = typeof project.image === 'string' && project.image.includes('img.youtube.com');
                 const useCover = isYoutubeThumb && project.format === 'short';
                 return (
-                <div
+                // Escalonado por columna: cada fila de 3 entra de izquierda a derecha
+                <Reveal
                   key={`${track}-${project.id}`}
-                  className="group cursor-pointer animate-in slide-in-from-bottom-4 duration-500 h-full"
+                  delay={(index % 3) * 90}
+                  className="group cursor-pointer h-full"
                   onClick={() => openModal(project)}
                 >
                   <div className="relative h-full flex flex-col rounded-2xl overflow-hidden border border-gray-800/50 hover:border-purple-500/30 bg-[#12121a] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10">
@@ -524,7 +527,7 @@ export default function Projects() {
                       <div className="flex flex-wrap gap-2">
                         {project.tags.filter(tag => {
                           const esTags = ['Manualidad', 'Arte', 'Artesania', 'Trabajo', 'League of Legends', 'Humor', 'Anecdota', 'Streaming', 'Edicion simple', 'Edicion compleja'];
-                          const enTags = ['Craft', 'Art', 'Handicraft', 'Work', 'Humor', 'Streaming', 'Simple Editing', 'Complex Editing'];
+                          const enTags = ['Craft', 'Art', 'Handicraft', 'Work', 'League of Legends', 'Humor', 'Streaming', 'Simple Editing', 'Complex Editing'];
                           // Tags personalizados (no traducidos) se muestran siempre
                           if (!esTags.includes(tag) && !enTags.includes(tag)) return true;
                           return (language === 'es' ? esTags : enTags).includes(tag);
@@ -536,7 +539,7 @@ export default function Projects() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               );
               })}
               </div>
@@ -548,8 +551,8 @@ export default function Projects() {
 
       {/* Video Modal */}
       {selectedVideo && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={closeModal}>
-          <div className={`relative w-full mx-auto ${selectedVideo.isInstagram || selectedVideo.videoFile ? 'max-w-[400px]' : 'max-w-4xl'}`} onClick={e => e.stopPropagation()}>
+        <div className="modal-backdrop fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={closeModal}>
+          <div className={`modal-panel relative w-full mx-auto ${selectedVideo.isInstagram || selectedVideo.videoFile ? 'max-w-[400px]' : 'max-w-4xl'}`} onClick={e => e.stopPropagation()}>
             <button
               onClick={closeModal}
               className="absolute -top-12 right-0 text-gray-400 hover:text-white transition-colors p-2"
