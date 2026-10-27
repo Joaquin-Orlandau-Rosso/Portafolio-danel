@@ -161,23 +161,23 @@ export const streamingProjects = [
     format: "video"
   },
   {
-    id: 12,
+    id: 30,
     title: {
-      es: "Puntuando los alfajores argentinos",
-      en: "Rating Argentine Alfajores"
+      es: "Redebut VTuber de Fuvu (resumen)",
+      en: "Fuvu's VTuber Redebut (Recap)"
     },
     category: {
-      es: "Charla humorística",
-      en: "Comedy talk"
+      es: "Resumen de stream",
+      en: "Stream recap"
     },
-    video: "https://www.youtube.com/watch?v=hfyngrnqSxs",
-    image: "https://img.youtube.com/vi/hfyngrnqSxs/maxresdefault.jpg",
-    tags: ["Edicion simple", "Simple Editing"],
+    video: "https://www.youtube.com/watch?v=gwTBf9SRRxc",
+    image: "https://img.youtube.com/vi/gwTBf9SRRxc/maxresdefault.jpg",
+    tags: ["VTuber", "Streaming"],
     clipInfo: {
-      es: "Canal: Danez43",
-      en: "Channel: Danez43"
+      es: "Canal: Fuvu'sChannel",
+      en: "Channel: Fuvu'sChannel"
     },
-    clipLink: "https://www.youtube.com/watch?v=hfyngrnqSxs",
+    clipLink: "https://youtu.be/gwTBf9SRRxc",
     link: "#",
     isYoutube: true,
     format: "video"
@@ -227,23 +227,23 @@ export const streamingProjects = [
     format: "video"
   },
   {
-    id: 29,
+    id: 12,
     title: {
-      es: "GTA 6 está llevando la vida salvaje a un nivel absurdo",
-      en: "GTA 6 Is Taking Wildlife to an Absurd Level"
+      es: "Puntuando los alfajores argentinos",
+      en: "Rating Argentine Alfajores"
     },
     category: {
-      es: "Análisis",
-      en: "Analysis"
+      es: "Charla humorística",
+      en: "Comedy talk"
     },
-    video: "https://www.youtube.com/watch?v=XY61DFGMVz4",
-    image: "https://img.youtube.com/vi/XY61DFGMVz4/maxresdefault.jpg",
-    tags: ["GTA 6"],
+    video: "https://www.youtube.com/watch?v=hfyngrnqSxs",
+    image: "https://img.youtube.com/vi/hfyngrnqSxs/maxresdefault.jpg",
+    tags: ["Edicion simple", "Simple Editing"],
     clipInfo: {
-      es: "Canal: Código VI",
-      en: "Channel: Código VI"
+      es: "Canal: Danez43",
+      en: "Channel: Danez43"
     },
-    clipLink: "https://www.youtube.com/watch?v=XY61DFGMVz4",
+    clipLink: "https://www.youtube.com/watch?v=hfyngrnqSxs",
     link: "#",
     isYoutube: true,
     format: "video"
@@ -345,6 +345,48 @@ export const streamingProjects = [
     videoFile: "/videos/ig_DTYoBbhCGVm.mp4",
     creator: "fuvu",
     format: "short"
+  },
+  {
+    id: 31,
+    title: { es: "Clip Destacado de Darkry", en: "Featured Clip from Darkry" },
+    category: { es: "Gameplay", en: "Gameplay" },
+    video: "https://www.instagram.com/p/Dd7KIRhIY1d/",
+    image: "/images/ig_Dd7KIRhIY1d.jpg",
+    tags: ["Minecraft", "Humor"],
+    clipInfo: { es: "Clip de Darkry", en: "Clip by Darkry" },
+    clipLink: "https://www.instagram.com/p/Dd7KIRhIY1d/",
+    link: "#",
+    videoFile: "/videos/ig_Dd7KIRhIY1d.mp4",
+    creator: "darkry",
+    format: "short"
+  },
+  {
+    id: 32,
+    title: { es: "Clip de Darkry 2", en: "Clip by Darkry 2" },
+    category: { es: "Gameplay", en: "Gameplay" },
+    video: "https://www.instagram.com/p/DeQFF3eIET-/",
+    image: "/images/ig_DeQFF3eIET-.jpg",
+    tags: ["Minecraft", "VTuber", "Humor"],
+    clipInfo: { es: "Clip de Darkry", en: "Clip by Darkry" },
+    clipLink: "https://www.instagram.com/p/DeQFF3eIET-/",
+    link: "#",
+    videoFile: "/videos/ig_DeQFF3eIET-.mp4",
+    creator: "darkry",
+    format: "short"
+  },
+  {
+    id: 33,
+    title: { es: "Clip de Darkry 3", en: "Clip by Darkry 3" },
+    category: { es: "Interacción con el chat", en: "Chat interaction" },
+    video: "https://www.instagram.com/p/DeaqUwaIZWF/",
+    image: "/images/ig_DeaqUwaIZWF.jpg",
+    tags: ["VTuber", "Humor"],
+    clipInfo: { es: "Clip de Darkry", en: "Clip by Darkry" },
+    clipLink: "https://www.instagram.com/p/DeaqUwaIZWF/",
+    link: "#",
+    videoFile: "/videos/ig_DeaqUwaIZWF.mp4",
+    creator: "darkry",
+    format: "short"
   }
 ];
 
@@ -442,44 +484,82 @@ export const professionalProjects = [
 
 export const irlProjects = [
   {
-    id: 6,
-    title: {
-      es: "Calabaza modelada a mano",
-      en: "Hand-Sculpted Pumpkin"
-    },
-    category: {
-      es: "Manualidad",
-      en: "Craft"
-    },
-    video: "https://www.youtube.com/watch?v=Lsby2lWpxCo",
-    image: "/images/calabaza.jpg",
-    tags: ["Manualidad", "Arte", "Artesania", "Craft", "Art", "Handicraft"],
-    clipInfo: {
-      es: "Trabajo realizado: corrección de color y corte",
-      en: "Work done: color correction and editing"
-    },
+    id: 34,
+    title: { es: "Más barato que Backmarket", en: "Cheaper than Backmarket" },
+    category: { es: "Vlog de compraventa", en: "Resale vlog" },
+    video: "https://www.instagram.com/reel/DZdSF6eOfi_/",
+    image: "/images/ig_DZdSF6eOfi_.jpg",
+    tags: ["Motion graphics", "Montaje dinámico", "Edición simple"],
+    clipInfo: { es: "Trabajo realizado: corte y subtitulado", en: "Work done: cutting and subtitling" },
+    clipLink: "https://www.instagram.com/reel/DZdSF6eOfi_/",
     link: "#",
-    isYoutube: true
+    videoFile: "/videos/ig_DZdSF6eOfi_.mp4",
+    creator: "adri"
   },
   {
-    id: 7,
-    title: {
-      es: "Bandeja de caramelo",
-      en: "Candy Tray"
-    },
-    category: {
-      es: "Manualidad",
-      en: "Craft"
-    },
-    video: "https://www.youtube.com/watch?v=lKockneAvYA",
-    image: "/images/bandeja caramelo.jpg",
-    tags: ["Manualidad", "Arte", "Artesania", "Craft", "Art", "Handicraft"],
-    clipInfo: {
-      es: "Trabajo realizado: corrección de color y corte",
-      en: "Work done: color correction and editing"
-    },
+    id: 35,
+    title: { es: "Su padre no estaba convencido", en: "His Dad Wasn't Convinced" },
+    category: { es: "Vlog de compraventa", en: "Resale vlog" },
+    video: "https://www.instagram.com/reel/DdHFhpitP2z/",
+    image: "/images/ig_DdHFhpitP2z.jpg",
+    tags: ["Motion graphics", "Montaje dinámico", "Edición simple"],
+    clipInfo: { es: "Trabajo realizado: corte y subtitulado", en: "Work done: cutting and subtitling" },
+    clipLink: "https://www.instagram.com/reel/DdHFhpitP2z/",
     link: "#",
-    isYoutube: true
+    videoFile: "/videos/ig_DdHFhpitP2z.mp4",
+    creator: "adri"
+  },
+  {
+    id: 36,
+    title: { es: "Venta bajo la lluvia", en: "A Sale in the Rain" },
+    category: { es: "Vlog de compraventa", en: "Resale vlog" },
+    video: "https://www.instagram.com/reel/DYhlAJgNWeb/",
+    image: "/images/ig_DYhlAJgNWeb.jpg",
+    tags: ["Motion graphics", "Montaje dinámico", "Edición simple"],
+    clipInfo: { es: "Trabajo realizado: corte y subtitulado", en: "Work done: cutting and subtitling" },
+    clipLink: "https://www.instagram.com/reel/DYhlAJgNWeb/",
+    link: "#",
+    videoFile: "/videos/ig_DYhlAJgNWeb.mp4",
+    creator: "adri"
+  },
+  {
+    id: 37,
+    title: { es: "Me pagan 300 € y pasa esto", en: "They Pay Me €300 and This Happens" },
+    category: { es: "Vlog de compraventa", en: "Resale vlog" },
+    video: "https://www.instagram.com/reel/DZknemUNcLl/",
+    image: "/images/ig_DZknemUNcLl.jpg",
+    tags: ["Motion graphics", "Montaje dinámico", "Edición simple"],
+    clipInfo: { es: "Trabajo realizado: corte y subtitulado", en: "Work done: cutting and subtitling" },
+    clipLink: "https://www.instagram.com/reel/DZknemUNcLl/",
+    link: "#",
+    videoFile: "/videos/ig_DZknemUNcLl.mp4",
+    creator: "adri"
+  },
+  {
+    id: 38,
+    title: { es: "Me pagó de más", en: "He Overpaid Me" },
+    category: { es: "Vlog de compraventa", en: "Resale vlog" },
+    video: "https://www.instagram.com/reel/Db6aML1OUqC/",
+    image: "/images/ig_Db6aML1OUqC.jpg",
+    tags: ["Motion graphics", "Montaje dinámico", "Edición simple"],
+    clipInfo: { es: "Trabajo realizado: corte y subtitulado", en: "Work done: cutting and subtitling" },
+    clipLink: "https://www.instagram.com/reel/Db6aML1OUqC/",
+    link: "#",
+    videoFile: "/videos/ig_Db6aML1OUqC.mp4",
+    creator: "adri"
+  },
+  {
+    id: 39,
+    title: { es: "Todo iba bien hasta que…", en: "Everything Was Fine Until…" },
+    category: { es: "Vlog de compraventa", en: "Resale vlog" },
+    video: "https://www.instagram.com/reel/DY4vO3FNXzY/",
+    image: "/images/ig_DY4vO3FNXzY.jpg",
+    tags: ["Motion graphics", "Montaje dinámico", "Edición simple"],
+    clipInfo: { es: "Trabajo realizado: corte y subtitulado", en: "Work done: cutting and subtitling" },
+    clipLink: "https://www.instagram.com/reel/DY4vO3FNXzY/",
+    link: "#",
+    videoFile: "/videos/ig_DY4vO3FNXzY.mp4",
+    creator: "adri"
   },
   {
     id: 9,
@@ -500,7 +580,8 @@ export const irlProjects = [
     },
     clipLink: "https://www.instagram.com/reel/DZ-2YCHOcBh/",
     link: "#",
-    videoFile: "/videos/ig_DZ-2YCHOcBh.mp4"
+    videoFile: "/videos/ig_DZ-2YCHOcBh.mp4",
+    creator: "adri"
   },
   {
     id: 10,
@@ -521,7 +602,8 @@ export const irlProjects = [
     },
     clipLink: "https://www.instagram.com/reel/DaIq_1Vtp4a/",
     link: "#",
-    videoFile: "/videos/ig_DaIq_1Vtp4a.mp4"
+    videoFile: "/videos/ig_DaIq_1Vtp4a.mp4",
+    creator: "adri"
   },
   {
     id: 11,
@@ -542,6 +624,7 @@ export const irlProjects = [
     },
     clipLink: "https://www.instagram.com/reel/DZvZzd_uxlm/",
     link: "#",
-    videoFile: "/videos/ig_DZvZzd_uxlm.mp4"
+    videoFile: "/videos/ig_DZvZzd_uxlm.mp4",
+    creator: "adri"
   }
 ];

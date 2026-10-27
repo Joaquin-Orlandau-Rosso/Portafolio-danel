@@ -91,6 +91,16 @@ const CREATORS = {
     url: 'https://www.instagram.com/fuvu_vt/',
     avatar: '/images/fuvu_vt-avatar.jpg',
   },
+  darkry: {
+    handle: '@darkryvt',
+    url: 'https://www.instagram.com/darkryvt/',
+    avatar: '/images/darkryvt-avatar.jpg',
+  },
+  adri: {
+    handle: '@adriiphones',
+    url: 'https://www.instagram.com/adriiphones/',
+    avatar: '/images/adriiphones-avatar.jpg',
+  },
   soymat: {
     handle: '@somossoymat',
     url: 'https://www.instagram.com/somossoymat/',
@@ -100,7 +110,7 @@ const CREATORS = {
 
 // Orden en que se muestran los creadores. Los que no figuran acá van después,
 // respetando su orden de aparición.
-const CREATOR_ORDER = ['zago', 'fuvu', 'sana', 'danez'];
+const CREATOR_ORDER = ['zago', 'fuvu', 'sana', 'darkry', 'danez'];
 
 // Agrupa los proyectos por creador, respetando el orden de aparición.
 // Los que no tienen creador quedan juntos al final, sin círculo.
@@ -130,12 +140,12 @@ function groupByCreator(projects) {
 
 const PRO_SUBTABS = {
   es: [
-    { key: 'cine', label: 'Cine' },
     { key: 'spot', label: 'Spot publicitario' },
+    { key: 'cine', label: 'Cine' },
   ],
   en: [
-    { key: 'cine', label: 'Cinema' },
     { key: 'spot', label: 'Advertising Spot' },
+    { key: 'cine', label: 'Cinema' },
   ],
 };
 
@@ -156,7 +166,7 @@ export default function Projects() {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [track, setTrack] = useState(null);
   const [socialSubTab, setSocialSubTab] = useState('short');
-  const [proSubTab, setProSubTab] = useState('cine');
+  const [proSubTab, setProSubTab] = useState('spot');
   const sectionRef = useRef(null);
 
   const getYouTubeId = (url) => {
@@ -223,7 +233,7 @@ export default function Projects() {
   const chooseTrack = (key) => {
     setTrack(key);
     if (key === 'social') setSocialSubTab('short');
-    if (key === 'professional') setProSubTab('cine');
+    if (key === 'professional') setProSubTab('spot');
     scrollToSection();
   };
 
